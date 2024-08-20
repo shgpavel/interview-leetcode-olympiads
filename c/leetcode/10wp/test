@@ -1,0 +1,8 @@
+aa a 0
+ab .* 1
+aa a. 1
+mississippi mis*is*p*. 0
+aab c*a*b 1
+mississippi mis*is*ip*. 1
+abcd d* 0
+ab .*c 0

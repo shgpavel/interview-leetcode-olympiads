@@ -1,0 +1,21 @@
+CFLAGS := -Wall -Wextra -O3 -std=c2x ${CFLAGS}
+
+CC = clang
+LD = clang
+
+#SRCS = A.c
+#SRCS = B.c
+#SRCS = C.c
+#SRCS = D.c
+SRCS = E.c
+#SRCS = F.c
+#SRCS = G1.c
+#SRCS = G2.c
+
+LL =
+
+main: $(SRCS)
+	$(CC) $(SRCS) -o main.o $(LL) $(CFLAGS)
+
+clean:
+	rm -rf main.o
