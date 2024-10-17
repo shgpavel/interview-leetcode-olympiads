@@ -1,3 +1,2 @@
-# leetcode_cache
-
-Welcome to the leetcode_cache repository!
+## interview-leetcode-olympiads
+Leetcode solutions, codeforces and interview tasks

@@ -5,39 +5,55 @@ int main() {
   size_t r, c;
   scanf("%zu%zu", &r, &c);
 
-  char sdwd[400];
-  memset(sdwd, '\0', sizeof(sdwd));
+  char scanwd[400];
+  memset(scanwd, '\0', sizeof(scanwd));
 
   for (size_t i = 0; i < r; ++i) {
     for (size_t j = 0; j < c;) {
-      char push_c;
-      scanf("%c", &push_c);
+      char c_push;
+      scanf("%c", &c_push);
 
-      if (push_c == '\n') continue;
+      if (c_push == '\n') continue;
 
-      sdwd[j + i * c] = push_c;
+      scanwd[i * c + j] = c_push;
       ++j;
     }
   }
-
-	char min_row[20], cur_word[20];
-  memset(min_row, 'z' + 1, sizeof(min_row));
+	
+	char min_row[32], cur_word[32];
+  memset(min_row, 'z' + 1, sizeof(min_row) - 2);
+	min_row[sizeof(min_row) - 1] = '\0';
   for (size_t i = 0, k = 0; i < r; ++i) {
     for (size_t j = 0; j < c; ++j) {
-      if (sdwd[j + i * c] == '#' || j == c - 1) {
-        if (!strcmp(min_row, cur_word)) {
-          memcpy(cur_word, min_row, sizeof(cur_word));
-        }
-        k = 0;
-        memset(cur_word, 'z' + 1, sizeof(cur_word));
-      } else {
-        cur_word[k] = sdwd[j + i * c];
-        ++k;
+			cur_word[k] = scanwd[i * c + j];
+			++k;
+			printf("%s\n", cur_word);
+
+      if (scanwd[i * c + j] == '#' || j == c - 1) {
+
+				if (
+						strcmp(min_row, cur_word) > 0
+						&& strlen(cur_word) > 1
+						&& strstr(cur_word, "#") == NULL
+						) {
+					memcpy(min_row, cur_word, sizeof(cur_word));
+				}
+				k = 0;
+        memset(cur_word, '\0', sizeof(cur_word));
       }
     }
   }
-
-  printf("%s\n", min_row);
 	
+
   return 0;
 }
+
+
+/*
+	for (size_t i = 0; i < r; ++i) {
+		for (size_t j = 0; j < c; ++j) {
+			printf("%c", sdwd[i * c + j]);
+		}
+		printf("\n");
+	}
+*/
